@@ -86,9 +86,9 @@ func main() {
 		// write
 		if time.Now().After(pingAt) {
 			buffOut[4] = byte(myPings & 0x000000ff)
-			buffOut[5] = byte(myPings & 0x0000ff00)
-			buffOut[6] = byte(myPings & 0x00ff0000)
-			buffOut[7] = byte(myPings & 0xff000000)
+			buffOut[5] = byte(myPings & 0x0000ff00 >> 8)
+			buffOut[6] = byte(myPings & 0x00ff0000 >> 16)
+			buffOut[7] = byte(myPings & 0xff000000 >> 24)
 			if _, err := conn.WriteToUDP(buffOut, bcast); err != nil {
 				log.Fatal(err)
 			}

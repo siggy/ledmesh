@@ -19,6 +19,9 @@ sudo locale-gen
 ## batman
 #
 
+# Based on:
+# https://www.reddit.com/r/darknetplan/comments/68s6jp/how_to_configure_batmanadv_on_the_raspberry_pi_3/
+
 sudo apt install libnl-3-dev libnl-genl-3-dev
 git clone https://git.open-mesh.org/batctl.git
 (
@@ -48,6 +51,7 @@ sleep 5s
 # different devices. Make sure to indicate the number
 # of bits used for the mask.
 sudo ifconfig bat0 172.27.0.x/16
+sudo iwconfig wlan0 ap CA:B4:54:B1:5A:75
 
 # test batctl
 sudo batctl o
