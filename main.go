@@ -57,7 +57,7 @@ func main() {
 	buffOut := make([]byte, msgSize)
 	copy(buffOut[0:4], myIP)
 
-	bcast := &net.UDPAddr{Port: port, IP: net.IPv4bcast}
+	bcast := &net.UDPAddr{Port: port, IP: net.IPv4(172, 27, 255, 255)}
 	pingAt := time.Now()
 
 	for {
