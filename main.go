@@ -36,7 +36,7 @@ func main() {
 	for _, addr := range addrs {
 		ipnet := addr.(*net.IPNet)
 		ip4 := ipnet.IP.To4()
-		if ip4 != nil {
+		if ip4 != nil && ip4[0] == 172 {
 			myIP = ip4
 		}
 	}
