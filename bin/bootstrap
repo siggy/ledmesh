@@ -5,7 +5,7 @@
 
 # install packages
 sudo apt-get update
-sudo apt-get install -y git tmux vim # dnsmasq hostapd
+sudo apt-get install -y git tmux vim
 
 # to fix tmux locale issue
 echo "en_US.UTF-8 UTF-8" | sudo tee --append /etc/locale.gen
@@ -47,71 +47,5 @@ sleep 5s
 # of bits used for the mask.
 sudo ifconfig bat0 172.27.0.x/16
 
-#
-## bluez
-#
-
-sudo apt-get install autotools-dev libtool m4 automake libglib2.0-dev libudev-dev libdbus-1-dev libreadline-dev libical-dev libjson-c-dev libsbc-dev libdw-dev libelf-dev elfutils libalsa-ocaml-dev libspeexdsp-dev
-
-wget https://mirrors.edge.kernel.org/pub/linux/libs/ell/ell-0.10.tar.gz
-tar xvfz ell-0.10.tar.gz
-cd ell-0.10
-./configure --prefix=/usr
-make
-sudo make install
-
-# sudo apt-get install libglib2.0-dev libudev-dev libsbc-dev libreadline-dev libical-dev libelf-dev elfutils libdw-dev libjson-c-dev libalsa-ocaml-dev libspeexdsp-dev
-
-git clone https://github.com/hadess/bluez.git
-cd bluez
-./bootstrap-configure
-make
-sudo make install
-
-
-# # set up wifi (note leading space to avoid bash history)
-# sudo tee --append /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null << 'EOF'
-# network={
-#     ssid="<WIFI_SSID>"
-#     psk="<WIFI_PASSWORD>"
-# }
-# EOF
-
-# # set static IP address
-# sudo tee --append /etc/dhcpcd.conf > /dev/null << 'EOF'
-
-# # set static ip
-
-# interface eth0
-# static ip_address=192.168.1.141/24
-# static routers=192.168.1.1
-# static domain_name_servers=192.168.1.1
-
-# interface wlan0
-# static ip_address=192.168.1.142/24
-# static routers=192.168.1.1
-# static domain_name_servers=192.168.1.1
-# EOF
-
-# # reboot to connect over wifi
-# sudo shutdown -r now
-
-
-# # configure git
-# git config --global push.default simple
-# git config --global core.editor "vim"
-# git config --global user.email "you@example.com"
-# git config --global user.name "Your Name"
-
-# # disable services
-# sudo systemctl disable hciuart
-# sudo systemctl disable bluetooth
-# sudo systemctl disable plymouth
-
-# # remove unnecessary packages
-# sudo apt-get -y purge libx11-6 libgtk-3-common xkb-data lxde-icon-theme raspberrypi-artwork penguinspuzzle ntp plymouth*
-# sudo apt-get -y autoremove
-
-# sudo raspi-config nonint do_boot_behaviour B2 0
-# sudo raspi-config nonint do_boot_wait 1
-# sudo raspi-config nonint do_serial 1
+# test batctl
+sudo batctl o

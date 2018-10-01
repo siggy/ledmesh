@@ -9,7 +9,7 @@ LEDs over a mesh network
 1. Download Raspian Lite: https://downloads.raspberrypi.org/raspbian_lite_latest
 2. Flash `20XX-XX-XX-raspbian-stretch-lite.zip` using Etcher
 3. Remove/reinsert flash drive
-4. Add `ssh` file:
+4. Add `ssh` and `bootstrap` files:
     ```bash
     touch /Volumes/boot/ssh
     cp bin/bootstrap /Volumes/boot/
@@ -27,4 +27,10 @@ ssh pi@raspberrypi.local
 passwd
 
 /bootstrap
+```
+
+## Build and run
+
+```bash
+go run main.go
 ```
