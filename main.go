@@ -46,7 +46,7 @@ func main() {
 	sig := make(chan os.Signal, 1)
 	signal.Notify(sig, os.Interrupt, os.Kill)
 
-	conn, err := net.ListenUDP("udp", &net.UDPAddr{IP: myIP, Port: port})
+	conn, err := net.ListenUDP("udp", &net.UDPAddr{Port: port})
 	if err != nil {
 		log.Fatal(err)
 	}
