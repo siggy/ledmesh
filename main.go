@@ -46,7 +46,7 @@ func main() {
 	sig := make(chan os.Signal, 1)
 	signal.Notify(sig, os.Interrupt, os.Kill)
 
-	conn, err := net.ListenUDP("udp", &net.UDPAddr{Port: port})
+	conn, err := net.ListenUDP("udp", &net.UDPAddr{IP: myIP, Port: port})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -68,12 +68,10 @@ func main() {
 		// read
 		if n, addr, err := conn.ReadFromUDP(buffIn); err == nil {
 			if n == msgSize {
-				pings := uint32(
-					buffIn[4] +
-						buffIn[5]<<8 +
-						buffIn[6]<<16 +
-						buffIn[7]<<24,
-				)
+				pings := uint32(buffIn[4]) +
+					uint32(buffIn[5])<<8 +
+					uint32(buffIn[6])<<16 +
+					uint32(buffIn[7])<<24
 
 				log.Infof("%+v: %s: %d", addr, net.IP(buffIn[0:4]), pings)
 			} else {
