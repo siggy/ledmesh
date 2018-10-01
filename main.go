@@ -71,7 +71,7 @@ func main() {
 				pings := uint32(
 					buffIn[4] +
 						buffIn[5]<<8 +
-						buffIn[7]<<16 +
+						buffIn[6]<<16 +
 						buffIn[7]<<24,
 				)
 
