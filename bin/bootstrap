@@ -63,5 +63,4 @@ git clone https://github.com/siggy/ledmesh.git ~/code/go/src/github.com/siggy/le
 # copy .local.bash to system, enable on reboot
 cp ~/code/go/src/github.com/siggy/ledmesh/.local.bash ~/
 source ~/.local.bash
-
 echo "[[ -s ${HOME}/.local.bash ]] && source ${HOME}/.local.bash" >> ~/.bashrc

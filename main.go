@@ -13,7 +13,7 @@ const (
 	port      = 4200
 	msgSize   = net.IPv4len + 4 // IP + uint32
 	interval  = 1 * time.Second
-	ifaceName = "wlan0" // rpi
+	ifaceName = "bat0" // rpi
 	// ifaceName = "en0" // pc
 )
 
